@@ -7,11 +7,11 @@ import { KeuzeModuleApp } from '../domain/entities/KeuzeModuleApp';
 import { KeuzeModuleAppModel } from '../models/KeuzeModuleAppModel';
 import { collectionName, toModel } from '../infrastructure/KeuzeModuleApp.Schema';
 
-// require MONGO_URL in environment (.env or env vars)
-let raw = process.env.MONGO_URL;
+// require MONGO_URI in environment (.env or env vars)
+let raw = process.env.MONGO_URI;
 if (!raw) {
-  console.error('[KeuzeModuleAppRepository] ERROR: MONGO_URL is not set. Put your MongoDB connection URI in .env as MONGO_URL and restart.');
-  throw new Error('MONGO_URL is required (set in .env)');
+  console.error('[KeuzeModuleAppRepository] ERROR: MONGO_URI is not set. Put your MongoDB connection URI in .env as MONGO_URI and restart.');
+  throw new Error('MONGO_URI is required (set in .env)');
 }
 
 // strip surrounding quotes if someone put the value in quotes in .env
@@ -40,7 +40,7 @@ export class KeuzeModuleAppRepository implements IKeuzeModuleAppRepository {
 
   constructor() {
     this.client = new MongoClient(raw as string);
-    console.log('[KeuzeModuleAppRepository] using MONGO_URL=', raw);
+    console.log('[KeuzeModuleAppRepository] using MONGO_URI=', raw);
     console.log('[KeuzeModuleAppRepository] using DB_NAME=', DB_NAME);
   }
 
