@@ -7,11 +7,7 @@ async function bootstrap() {
   // Enable CORS so the Vite dev server (http://localhost:5173) can call this API
   // Adjust origins as needed for your environments
   app.enableCors({
-    origin: [
-      'https://keuzemodule-frontend.onrender.com/',
-      'http://localhost:5173',
-      'http://127.0.0.1:5173',
-    ],
+    origin: true, // Allow all origins temporarily to test
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     allowedHeaders: 'Content-Type, Authorization',
     credentials: false,
