@@ -22,4 +22,11 @@ describe('AppController (e2e)', () => {
       .expect(200)
       .expect('Hello World!');
   });
+
+  it('/keuzemodules (GET) should return 200 and array', async () => {
+    const res = await request(app.getHttpServer())
+      .get('/keuzemodules')
+      .expect(200);
+    expect(Array.isArray(res.body)).toBe(true);
+  });
 });
