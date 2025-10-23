@@ -117,4 +117,11 @@ export class KeuzeModuleAppRepository implements IKeuzeModuleAppRepository {
     const res = await col.deleteOne({ id });
     return res.deletedCount === 1;
   }
+
+  async close(): Promise<void> {
+    if (this.connected) {
+      await this.client.close();
+      this.connected = false;
+    }
+  }
 }
